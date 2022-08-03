@@ -8,9 +8,10 @@ import {
     Alert
 }
     from "react-native";
-import {images, icons} from '../constants/index';
+import {images, icons, color} from '../constants/index';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {UIButton} from '../components/'
+import {UIButton} from '../components'
+import {fontSizes} from '../constants/index'
 
 const welcome = () => {
 
@@ -92,9 +93,21 @@ const welcome = () => {
                 justifyContent: 'center',
                 alignItems: 'center'
             }}>
-                <Text style={{marginBottom: 7, color: 'black'}}>Welcome to</Text>
-                <Text style={{marginBottom: 7, color: 'black'}}>DEMO COMPANY</Text>
-                <Text style={{color: 'black'}}>Please select your account type</Text>
+                <Text style={{
+                    marginBottom: 7, 
+                    color: 'white',
+                    fontSize: fontSizes.h5
+                    }}>Welcome to</Text>
+                <Text style={{
+                    marginBottom: 7, 
+                    color: 'white',
+                    fontSize: fontSizes.h4,
+                    fontWeight: 'bold'
+                    }}>DEMO COMPANY</Text>
+                <Text style={{
+                    color: 'white',
+                    fontSize: fontSizes.h5
+                    }}>Please select your account type</Text>
                 {/* <View>
                     
                 </View> */}
@@ -105,13 +118,13 @@ const welcome = () => {
                 // justifyContent: 'center'
                 
             }}>
-                <Icon.Button
+                {/* <Icon.Button
                     name="facebook"
                     backgroundColor="#3b5998"
                     // onPress={this.loginWithFacebook}
                 >
                     Login with Facebook
-                </Icon.Button>
+                </Icon.Button> */}
 
                 {accountTypes.map(accountType => <UIButton onPress={()=> {
                     let newAccountTypes = accountTypes.map(each =>
@@ -132,9 +145,36 @@ const welcome = () => {
 
             <View style={{
                 flex: 20,
-                backgroundColor: 'green'
-            }}>
+       
                 
+                
+            }}>
+                <UIButton  
+                
+                title = {'LOGIN'}
+                />
+
+                <Text style={{
+                     color: 'white',
+                     fontSize: fontSizes.h5,
+                     alignSelf: 'center'
+                }} >Do you want to register new account?</Text>
+                
+                <TouchableOpacity
+                    onPress={()=> {
+                        Alert.alert('press register')
+                    } } 
+                    style={{
+                    padding: 5
+                }} >
+                    <Text style={{
+                        color: color.primary,
+                        fontSize: fontSizes.h5,
+                        alignSelf: 'center',
+                        textDecorationLine: 'underline'
+                    }} >Register</Text>
+                </TouchableOpacity>
+
 
             </View>
         </ImageBackground>

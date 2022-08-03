@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {TouchableOpacity, Text, Alert} from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import {color} from '../constants/index'
 
 function UIButton(props) {
     const {onPress, title, isSelected} = props
@@ -28,7 +29,7 @@ function UIButton(props) {
             size={20} />}
        
         <Text style={{
-            color: isSelected==true? '#ED6263': 'white'
+            color: isSelected==true? color.primary : 'white'
         }}>{title}</Text>
 
     </TouchableOpacity>

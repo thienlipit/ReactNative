@@ -1,5 +1,5 @@
 {
-  "name": "FirstApps",
+  "name": "firstapps",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -45,5 +45,9 @@
       "json",
       "node"
     ]
-  }
+  },
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
