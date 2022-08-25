@@ -13,3 +13,9 @@ export const isValidPassword = (stringPassword: string) => {
         return true
     } return false
 }
+
+export const isValidRetypePassword = (stringPassword: string, stringRetypePassword: string) => {
+  if(stringPassword ==  stringRetypePassword) {
+      return true
+  } return false
+}
