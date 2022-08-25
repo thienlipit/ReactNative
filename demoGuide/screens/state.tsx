@@ -93,7 +93,7 @@ const showAlert = () =>
 
 const Cafe = () => (
   <View style={styles.container}>
-    <Button title="Show alert" onPress={showAlert} />
+    <Button title="Show alert from state" onPress={showAlert} />
   </View>
 );
 
