@@ -11,6 +11,10 @@ import TextInANest from './screens/textInNest'
 import StyleSheets from './screens/styleSheet'
 import ScrollView from './screens/scrollView'
 import UselessTextInput from './screens/textInput'
+import touchAbleOpacity from './screens/touchableOpacity'
+// import Modals from './screens/modal'
+// import RefreshControl from './screens/refreshControl'
+import MyReactNativeForm from './screens/formik'
 
 // AppRegistry.registerComponent(appName, () => App);
 // AppRegistry.registerComponent(appName, () => Cafe);
@@ -18,5 +22,8 @@ import UselessTextInput from './screens/textInput'
 // AppRegistry.registerComponent(appName, () => TextInANest);
 // AppRegistry.registerComponent(appName, () => StyleSheets);
 // AppRegistry.registerComponent(appName, () => ScrollView);
-AppRegistry.registerComponent(appName, () => UselessTextInput);
+// AppRegistry.registerComponent(appName, () => touchAbleOpacity);
+// AppRegistry.registerComponent(appName, () => Modals);
+// AppRegistry.registerComponent(appName, () => RefreshControl);
+AppRegistry.registerComponent(appName, () => MyReactNativeForm);
 
