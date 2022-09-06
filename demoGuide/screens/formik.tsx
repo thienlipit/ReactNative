@@ -3,6 +3,8 @@ import React from 'react';
 import { Button, TextInput, View, StyleSheet, Alert, Text, Keyboard } from 'react-native';
 import { Formik, useFormik, validateYupSchema } from 'formik';
 import * as Yup from 'yup';
+import LinearGradient from 'react-native-linear-gradient';
+
 const validationSchema = Yup.object().shape({
   firstName: Yup.string().required('Name is required').label('firstName'),
   email: Yup.string()
@@ -29,7 +31,7 @@ const MyReactNativeForm = () => {
         initialValues={{ firstName: '', email: '' }}
         validationSchema={validationSchema}
         onSubmit={values => {
-          Alert.alert(values.firstName +"\n"+ values.email);
+          Alert.alert("First name: " + values.firstName + "\nEmail: "+ values.email);
           console.log(values)
         }
         }>
@@ -77,6 +79,16 @@ const MyReactNativeForm = () => {
           </View>
         )}
       </Formik>
+      
+      {/* <View> */}
+        <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.linearGradient}>
+        <Text style={styles.buttonText}>
+          Sign in with Facebook
+        </Text>
+        </LinearGradient>
+      {/* </View> */}
+
+
     </>
   );
 };
@@ -93,7 +105,21 @@ const styles = StyleSheet.create({
     marginTop: 26,
     paddingVertical: 10,
     backgroundColor: "silver"
-  }
+  },
+  linearGradient: {
+    flex: 1,
+    paddingLeft: 15,
+    paddingRight: 15,
+    borderRadius: 5
+  },
+  buttonText: {
+    fontSize: 18,
+    fontFamily: 'Gill Sans',
+    textAlign: 'center',
+    margin: 10,
+    color: '#ffffff',
+    backgroundColor: 'transparent',
+  },
 });
 
 export default MyReactNativeForm;

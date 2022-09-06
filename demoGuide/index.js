@@ -27,6 +27,6 @@ import SignUpForm from './src/components/Form/SignUpForm'
 // AppRegistry.registerComponent(appName, () => touchAbleOpacity);
 // AppRegistry.registerComponent(appName, () => Modals);
 // AppRegistry.registerComponent(appName, () => RefreshControl);
-//AppRegistry.registerComponent(appName, () => MyReactNativeForm);
+AppRegistry.registerComponent(appName, () => MyReactNativeForm);
 //AppRegistry.registerComponent(appName, () => KeyboardAvoidingComponent);
-AppRegistry.registerComponent(appName, () => SignUpForm);
+// AppRegistry.registerComponent(appName, () => SignUpForm);
