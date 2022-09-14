@@ -17,6 +17,7 @@ import RefreshControl from './screens/refreshControl'
 import MyReactNativeForm from './screens/formik'
 import KeyboardAvoidingComponent from './screens/KeyboardAvoidingComponent'
 import SignUpForm from './src/components/Form/SignUpForm'
+import ScaleDemo from './screens/scale'
 
 // AppRegistry.registerComponent(appName, () => App);
 // AppRegistry.registerComponent(appName, () => Cafe);
@@ -27,6 +28,7 @@ import SignUpForm from './src/components/Form/SignUpForm'
 // AppRegistry.registerComponent(appName, () => touchAbleOpacity);
 // AppRegistry.registerComponent(appName, () => Modals);
 // AppRegistry.registerComponent(appName, () => RefreshControl);
-AppRegistry.registerComponent(appName, () => MyReactNativeForm);
+// AppRegistry.registerComponent(appName, () => MyReactNativeForm);
 //AppRegistry.registerComponent(appName, () => KeyboardAvoidingComponent);
 // AppRegistry.registerComponent(appName, () => SignUpForm);
+AppRegistry.registerComponent(appName, () => ScaleDemo);
