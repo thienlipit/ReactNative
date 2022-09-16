@@ -3,7 +3,7 @@
  */
 
 import {AppRegistry} from 'react-native';
-import App from './App';
+// import App from './App';
 import {name as appName} from './app.json';
 import Cafe from './screens/state';
 import ViewBoxesWithColorAndText from './screens/view'
@@ -18,6 +18,9 @@ import MyReactNativeForm from './screens/formik'
 import KeyboardAvoidingComponent from './screens/KeyboardAvoidingComponent'
 import SignUpForm from './src/components/Form/SignUpForm'
 import ScaleDemo from './screens/scale'
+import PickImage from './screens/demoPickImage/pickImage'
+import App from './screens/demoPickImage/pickImage'
+import App11 from './screens/demoPickImage/fromFile'
 
 // AppRegistry.registerComponent(appName, () => App);
 // AppRegistry.registerComponent(appName, () => Cafe);
@@ -31,4 +34,6 @@ import ScaleDemo from './screens/scale'
 // AppRegistry.registerComponent(appName, () => MyReactNativeForm);
 //AppRegistry.registerComponent(appName, () => KeyboardAvoidingComponent);
 // AppRegistry.registerComponent(appName, () => SignUpForm);
-AppRegistry.registerComponent(appName, () => ScaleDemo);
+// AppRegistry.registerComponent(appName, () => ScaleDemo);
+// AppRegistry.registerComponent(appName, () => PickImage);
+AppRegistry.registerComponent(appName, () => App11);

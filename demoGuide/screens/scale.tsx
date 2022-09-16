@@ -59,8 +59,8 @@ const styles = StyleSheet.create({
     margin: 16,
   },
   scale: {
-    width: scale(350),
-    height: scale(350),
+    width: scale(250),
+    height: scale(250),
   },
   color: {
     color: 'white',
