@@ -21,6 +21,10 @@ import ScaleDemo from './screens/scale'
 import PickImage from './screens/demoPickImage/pickImage'
 import App from './screens/demoPickImage/pickImage'
 import App11 from './screens/demoPickImage/fromFile'
+import DemoSnap from './src/demoSnap'
+import demoCarousel from './src/demoCarousel'
+import CarouselView from './src/carouselView'
+
 
 // AppRegistry.registerComponent(appName, () => App);
 // AppRegistry.registerComponent(appName, () => Cafe);
@@ -36,4 +40,7 @@ import App11 from './screens/demoPickImage/fromFile'
 // AppRegistry.registerComponent(appName, () => SignUpForm);
 // AppRegistry.registerComponent(appName, () => ScaleDemo);
 // AppRegistry.registerComponent(appName, () => PickImage);
-AppRegistry.registerComponent(appName, () => App11);
+// AppRegistry.registerComponent(appName, () => App11);
+AppRegistry.registerComponent(appName, () => DemoSnap);
+// AppRegistry.registerComponent(appName, () => demoCarousel);
+// AppRegistry.registerComponent(appName, () => CarouselView);
