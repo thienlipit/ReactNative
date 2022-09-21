@@ -15,3 +15,5 @@ export const dumyData = [
         id: 3
     }
 ]
+
+export const width11 = 113
