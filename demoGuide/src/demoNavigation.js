@@ -1,11 +1,27 @@
 import * as React from 'react';
-import { View, Text, Button, TextInput } from 'react-native';
+import { View, Text, Button, TextInput, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
 function HomeScreen({ navigation, route }) {
     let strMessage = "string sent from HOME screen"
+    const [count, setCount] = React.useState(0);
+
+    React.useLayoutEffect(() => {
+        navigation.setOptions({
+        
+          headerRight: () => (
+            <Button onPress={() => setCount((c) => c + 1)} title="+ count" />
+          ),
+          headerLeft: () => (
+            <Button onPress={() => setCount((c) => c - 1)} title="- count" />
+          ),
+          
+        });
+        
+      }, [navigation]);
+    
 
     React.useEffect(() => {
         if (route.params?.post) {
@@ -35,7 +51,7 @@ function HomeScreen({ navigation, route }) {
                 })}
             />
             <Text style={{ margin: 10 }}>Post: {route.params?.post}</Text>
-            
+            <Text style={{ margin: 10 }}>Count: {count}</Text>
 
         </View>
     );
@@ -101,6 +117,15 @@ function DetailsScreen({ route, navigation }) {
     );
 }
 
+function LogoTitle() {
+    return (
+      <Image
+        style={{ width: 30, height: 30 }}
+        source={require('../assets/house.png')}
+      />
+    );
+  }
+
 const Stack = createNativeStackNavigator();
 
 function Navigation() {
@@ -121,14 +146,22 @@ function Navigation() {
                     name="Home" 
                     component={HomeScreen}
                     options={{ 
+                        // headerTitle: (props) => <LogoTitle {...props} />,
                         title: 'My Home',
-                        headerLeft: () => (
-                            <Button
-                              onPress={() => alert('This is a button!')}
-                              title="Info"
-                              color="#97CADB"
-                            />
-                          ),
+                        // headerRight: () => (
+                        //     <Button
+                        //       onPress={() => alert('This is a button!')}
+                        //       title="Info"
+                        //       color="#97CADB"
+                        //     />
+                        //   ),
+                        // headerLeft: () => (
+                        //     <Button
+                        //       onPress={() => alert('This is a button!')}
+                        //       title="new button"
+                        //       color="#97CADB"
+                        //     />
+                        //   ),
                         }}
                      />
                 <Stack.Screen name="Details" component={DetailsScreen} />

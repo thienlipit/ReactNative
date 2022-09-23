@@ -33,7 +33,7 @@ const options = {
         path: 'images',
     },
 };
-const App11 = () => {
+const FromFile = () => {
     const [choose, setChoose] = useState(false)
     const [filePath, setFilePath] = useState({});
 
@@ -170,7 +170,7 @@ const App11 = () => {
 
 };
 
-export default App11;
+export default FromFile;
 
 const styles = StyleSheet.create({
     scrollView: {

@@ -1,8 +1,8 @@
 // Example of Image Picker in React Native
 // https://aboutreact.com/example-of-image-picker-in-react-native/
- 
+
 // Import React
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 // Import required components
 import {
   SafeAreaView,
@@ -14,18 +14,15 @@ import {
   Platform,
   PermissionsAndroid,
 } from 'react-native';
- 
-// Import Image Picker
-// import ImagePicker from 'react-native-image-picker';
 import {
   launchCamera,
   launchImageLibrary
 } from 'react-native-image-picker';
- 
-const App = () => {
+
+const PickImage = (navigation) => {
   var imageURI = null
   const [filePath, setFilePath] = useState({});
- 
+
   const requestCameraPermission = async () => {
     if (Platform.OS === 'android') {
       try {
@@ -44,7 +41,7 @@ const App = () => {
       }
     } else return true;
   };
- 
+
   const requestExternalWritePermission = async () => {
     if (Platform.OS === 'android') {
       try {
@@ -64,7 +61,7 @@ const App = () => {
       return false;
     } else return true;
   };
- 
+
   const captureImage = async (type) => {
     let options = {
       mediaType: type,
@@ -80,7 +77,7 @@ const App = () => {
     if (isCameraPermitted && isStoragePermitted) {
       launchCamera(options, (response) => {
         console.log('Response = ', response);
- 
+
         if (response.didCancel) {
           alert('User cancelled camera picker');
           return;
@@ -106,7 +103,7 @@ const App = () => {
       });
     }
   };
- 
+
   const chooseFile = (type) => {
     let options = {
       mediaType: type,
@@ -116,8 +113,8 @@ const App = () => {
     };
     launchImageLibrary(options, (response) => {
       console.log('Response = ', response);
-      console.log( "Content here:", JSON.stringify(response.assets[0].uri));
- 
+      console.log("Content here:", JSON.stringify(response.assets[0].uri));
+
       if (response.didCancel) {
         alert('User cancelled camera picker');
         return;
@@ -143,25 +140,18 @@ const App = () => {
       console.log('AHI', filePath)
     });
   };
- 
+
   return (
-    <SafeAreaView style={{flex: 1}}>
-      
+    <SafeAreaView style={{ flex: 1 }}>
+
       <Text style={styles.titleText}>
         Example of Image Picker in React Native
       </Text>
       <View style={styles.container}>
-        {/* <Image
-          source={{
-            uri: 'data:image/jpeg;base64,' + filePath.data,
-          }}
-          style={styles.imageStyle}
-        /> */}
-     
+
+
         <Image
-          // source={{uri: filePath.uri}}
-          
-          source={{uri: filePath.uri}}
+          source={{ uri: filePath.uri }}
           style={styles.imageStyle}
         />
         <Text style={styles.textStyle}>{filePath.uri}</Text>
@@ -197,9 +187,9 @@ const App = () => {
     </SafeAreaView>
   );
 };
- 
-export default App;
- 
+
+export default PickImage;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
