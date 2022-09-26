@@ -6220,6 +6220,11 @@
     "jscodeshift" "^0.13.1"
     "nullthrows" "^1.1.1"
 
+"react-native-fontawesome@^7.0.0":
+  "integrity" "sha512-UBZXyTLO8rK2NMf7Eomzb70b6cpL5JlBI4xwJGnRroRofrIXUxPelmm0Ojs6OcMs4ucAyPidCOxbJDJlmb2vdA=="
+  "resolved" "https://registry.npmjs.org/react-native-fontawesome/-/react-native-fontawesome-7.0.0.tgz"
+  "version" "7.0.0"
+
 "react-native-gradle-plugin@^0.70.3":
   "integrity" "sha512-oOanj84fJEXUg9FoEAQomA8ISG+DVIrTZ3qF7m69VQUJyOGYyDZmPqKcjvRku4KXlEH6hWO9i4ACLzNBh8gC0A=="
   "resolved" "https://registry.npmjs.org/react-native-gradle-plugin/-/react-native-gradle-plugin-0.70.3.tgz"
