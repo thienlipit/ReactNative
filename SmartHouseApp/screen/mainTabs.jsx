@@ -2,49 +2,13 @@ import * as React from 'react';
 import { Text, View, Image, Button, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-// import CountDown from 'react-native-countdown-component'
-// import Icon from 'react-native-vector-icons/Ionicons'
-import Home from '../components/smartHome/homeScreen'
-import FontAwesome, {
-    SolidIcons,
-    RegularIcons,
-    BrandIcons,
-    parseIconFromClassName,
-  } from 'react-native-fontawesome';
+import HomeScreen from '../components/smartHome/homeScreen'
+import SettingsScreen from '../components/smartHome/settingScreen'
+import WeatherScreen from '../components/smartHome/weatherScreen'
+import NotificationScreen from '../components/smartHome/notificationScreen'
+
 
 const Tab = createBottomTabNavigator();
-
-
-
-function SettingsScreen({navigation}) {
-
-    return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text style={{marginBottom: 10}}>Settings screen</Text>
-            <Button title='Move to Home' onPress={() => navigation.navigate('HomePage')} />
-            
-            <FontAwesome
-                style={styles.iconStyle}
-        //   icon={RegularIcons.addressBook}
-                icon={SolidIcons.smile}
-            />
-
-        {/* <FontAwesome icon={SolidIcons.smile} /> */}
-
-        {/* <CountDown
-          until={5}
-          //duration of countdown in seconds
-          timetoShow={('H', 'M', 'S')}
-          //formate to show
-          onFinish={() => alert('finished')}
-          //on Finish call
-          onPress={() => alert('hello')}
-          //on Press call
-          size={20}
-        /> */}
-        </View>
-    );
-}
 
 const MyTabs = () => {
     return (
@@ -60,7 +24,7 @@ const MyTabs = () => {
 
 
             }} >
-            <Tab.Screen name="HomePage" component={Home}
+            <Tab.Screen name="Home" component={HomeScreen}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <View style={{ alignItems: 'center', justifyContent: 'center', }}>
@@ -72,6 +36,7 @@ const MyTabs = () => {
                                     height: 25,
                                     tintColor: focused ? '#e32f45' : '#748c94',
                                 }} />
+
                             <Text style={{
                                 fontSize: 12,
                                 color: focused ? '#e32f45' : '#748c94',
@@ -79,10 +44,58 @@ const MyTabs = () => {
                         </View>
                     ),
 
-                }} />
+                }}
+            />
+
+            <Tab.Screen name="Weather" component={WeatherScreen}
+                options={{
+                    tabBarIcon: ({ focused }) => (
+                        <View style={{ alignItems: 'center', justifyContent: 'center', }}>
+                            <Image
+                                source={require('../assets/bolt-solid.png')}
+                                resizeMode='contain'
+                                style={{
+                                    width: 25,
+                                    height: 25,
+                                    tintColor: focused ? '#e32f45' : '#748c94',
+                                }} />
+
+                            <Text style={{
+                                fontSize: 12,
+                                color: focused ? '#e32f45' : '#748c94',
+                            }}>Weather</Text>
+                        </View>
+                    ),
+
+                }}
+            />
+
+            <Tab.Screen name="Notification" component={NotificationScreen}
+                options={{
+                    tabBarBadge: 1,
+                    tabBarIcon: ({ focused }) => (
+                        <View style={{ alignItems: 'center', justifyContent: 'center', }}>
+                            <Image
+                                source={require('../assets/bell-solid.png')}
+                                resizeMode='contain'
+                                style={{
+                                    width: 25,
+                                    height: 25,
+                                    tintColor: focused ? '#e32f45' : '#748c94',
+                                }} />
+
+                            <Text style={{
+                                fontSize: 12,
+                                color: focused ? '#e32f45' : '#748c94',
+                            }}>Notification</Text>
+                        </View>
+                    ),
+
+                }}
+            />
+
             <Tab.Screen name="Setting" component={SettingsScreen}
                 options={{
-                    tabBarBadge: 3,
                     tabBarIcon: ({ focused }) => (
                         <View style={{ alignItems: 'center', justifyContent: 'center', }}>
                             <Image
@@ -100,7 +113,8 @@ const MyTabs = () => {
                         </View>
                     ),
 
-                }} />
+                }}
+            />
 
         </Tab.Navigator>
     )
@@ -113,12 +127,3 @@ export default function Tabs() {
         </NavigationContainer>
     );
 }
-
-const styles = StyleSheet.create({
-    iconStyle: {
-        fontSize: 40,
-        marginTop: 30,
-        color: 'black',
-      },
-} 
-)

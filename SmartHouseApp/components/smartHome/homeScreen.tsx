@@ -1,33 +1,64 @@
 import * as React from 'react';
-import { Text, View, Image, Button, } from 'react-native';
+import { Text, View, Button, StyleSheet, Image } from 'react-native';
 import FontAwesome, { SolidIcons, RegularIcons, BrandIcons } from 'react-native-fontawesome';
 
-const Home = ({navigation}) => {
-    return ( <View style={{justifyContent: 'center', alignItems: 'center'}}>
-            <Text>Home screen edit ok</Text>
+const HomeScreen = ({navigation}) => {
+    return ( <View style={styles.container}>
 
-            <Button title='Move to Setting screen' onPress={() => navigation.navigate('Setting')} />
-
-            <Button 
-                title='Start'
-                onPress={() => {
-                    alert("finish")
-
-                }}
-            />
-
-        <View>
-            <FontAwesome 
-                icon={SolidIcons.smile}
-            />
-            <FontAwesome icon={RegularIcons.smileWink} />
-            <FontAwesome icon={BrandIcons.github} />
-            
+        <View style={styles.imgHeader}>
+            <View style={styles.leftContainer}>
+                <Image
+                    style={styles.leftContainer} 
+                    source={require('../../assets/bell-solid.png')} />
+            </View>
+            <View style={{flex: 1}} />
+            <View style={styles.rightContainer}>
+                <Image
+                    style={styles.rightContainer} 
+                    source={require('../../assets/profile.png')}
+                    /> 
+            </View>
+                
+                          
         </View>
+            
 
         </View>
     )
     
 }
 
-export default Home;
+export default HomeScreen;
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#f6f8fa'
+    },
+    imgHeader: {
+        flex: 1,
+        height: 200,
+        flexDirection: 'row',
+        marginTop: 20,
+
+    },
+    leftContainer: {
+        height: 50,
+        width: 50,
+        marginStart: 10,
+        resizeMode: 'contain',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        backgroundColor: 'green'
+      },
+      rightContainer: {
+        height: 60,
+        width: 60,
+        marginEnd: 10,
+        resizeMode: 'contain',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        // backgroundColor: 'red',
+        borderRadius: 50 / 2
+      },
+})
