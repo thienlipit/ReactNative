@@ -3,7 +3,6 @@ import { Text, View, Button, StyleSheet, Image, Switch } from 'react-native';
 import { getWeather, dailyForecast, showWeather, getLocation } from 'react-native-weather-api';
 import Geolocation from 'react-native-geolocation-service';
 import FontAwesome, { SolidIcons, RegularIcons, BrandIcons } from 'react-native-fontawesome';
-import Weather from './getWeather';
 
 const HomeScreen = ({ navigation }) => {
     
@@ -224,16 +223,8 @@ const HomeScreen = ({ navigation }) => {
 
             </View>
 
-
-
-
-
-
-
-
         </View>
     )
-
 }
 
 export default HomeScreen;
