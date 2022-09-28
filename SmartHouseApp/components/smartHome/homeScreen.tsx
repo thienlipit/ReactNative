@@ -1,11 +1,79 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, Button, StyleSheet, Image, Switch } from 'react-native';
+import { getWeather, dailyForecast, showWeather, getLocation } from 'react-native-weather-api';
+import Geolocation from 'react-native-geolocation-service';
 import FontAwesome, { SolidIcons, RegularIcons, BrandIcons } from 'react-native-fontawesome';
-
+import Weather from './getWeather';
 
 const HomeScreen = ({ navigation }) => {
+    
+    let latitude: number;
+    let longitude: number;
+    var temp
+    var wind
+    
+    const [weather, setWeather] = useState<number | null>(0);
+    const [location, setLocation] = useState('');
+    const [weatherStatus, setWeatherStatus] = useState('');
+    // const [weather1, setWeather1] = useState<Number | null>(0);
+    useEffect(() => {
+        Geolocation.getCurrentPosition(
+            (position) => {
+            latitude = position.coords.latitude
+            longitude = position.coords.longitude
+            console.log("GEO API", position);
+            console.log("lat API", latitude);
+            console.log("lon API", longitude);
+            getWeather({
+                key: "fd6437e8fb0b4665c9fc986e4321f785",
+                lat: latitude,
+                lon: longitude,
+                unit: "metric"   
+            }).then(() => {
+    
+                var data = new showWeather();
+                temp = data.temp;
+                wind = data.wind;
+                console.log('Weather',data)
+                setWeather(data.temp)
+                setLocation(data.country+', ' + data.name)
+                setWeatherStatus(data.description)
+            });
+            },
+            (error) => {
+            // See error code charts below.
+            console.log(error.code, error.message);
+            },
+            { enableHighAccuracy: false, timeout: 15000, maximumAge: 10000 }
+        );
+    }, []);
+
+    function renderElement() {
+        if (weatherStatus == 'broken clouds')
+            return (<Image
+                style={styles.weatherIcon}
+                source={require('../../assets/weather.png')} />)
+        if (weatherStatus == 'moderate rain'|| weatherStatus == 'heavy intensity rain')
+            return (<Image
+                style={styles.weatherIcon}
+                source={require('../../assets/rainy.png')} />);
+        else return (<Image
+                style={styles.weatherIcon}
+                source={require('../../assets/sun.png')} />);
+    }
+
+
     const [isEnabled, setIsEnabled] = useState(false);
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
+    const [isEnabledTV, setIsEnabledTV] = useState(false);
+    const toggleSwitchTV = () => setIsEnabledTV(previousState => !previousState);
+
+    const [isEnabledAC, setIsEnabledAC] = useState(false);
+    const toggleSwitchAC = () => setIsEnabledAC(previousState => !previousState);
+
+    const [isEnabledRoute, setIsEnabledRoute] = useState(false);
+    const toggleSwitchRoute = () => setIsEnabledRoute(previousState => !previousState);
 
     const [date, setDate] = useState('');
     useEffect(() => {
@@ -49,14 +117,12 @@ const HomeScreen = ({ navigation }) => {
                 }}>
                     <View style={{ flexDirection: 'column', flex: 1, justifyContent: 'center' }}>
                         <Text style={{ marginLeft: 15 }}>{date}</Text>
-                        <Text style={{ fontWeight: 'bold', fontSize: 25, color: '#25354b', marginLeft: 15 }}>Drizzling / 22°C</Text>
-                        <Text style={{ marginLeft: 15 }}>Purbalingga, Jawa tengah</Text>
+                        <Text style={{ fontWeight: 'bold', fontSize: 22, color: '#25354b', marginLeft: 15, textTransform: 'capitalize' }}>{weatherStatus } '/' {weather}'°C'</Text>
+                        <Text style={{ marginLeft: 15 }}>{location}</Text>
                     </View>
 
                     <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                        <Image
-                            style={styles.weatherIcon}
-                            source={require('../../assets/weather.png')} />
+                        {renderElement() }
                     </View>
                 </View>
             </View>
@@ -100,10 +166,10 @@ const HomeScreen = ({ navigation }) => {
                                 source={require('../../assets/tv.png')} />
                             <Switch
                                 trackColor={{ false: "#767577", true: "#f95f5e" }}
-                                thumbColor={isEnabled ? "#fff" : "#f4f3f4"}
+                                thumbColor={isEnabledTV ? "#fff" : "#f4f3f4"}
                                 ios_backgroundColor="#3e3e3e"
-                                onValueChange={toggleSwitch}
-                                value={isEnabled}
+                                onValueChange={toggleSwitchTV}
+                                value={isEnabledTV}
                             />
                         </View>
                         <View style={{ marginTop: 20, marginHorizontal: 20 }}>
@@ -122,10 +188,10 @@ const HomeScreen = ({ navigation }) => {
                                 source={require('../../assets/air-conditioner.png')} />
                             <Switch
                                 trackColor={{ false: "#767577", true: "#f95f5e" }}
-                                thumbColor={isEnabled ? "#fff" : "#f4f3f4"}
+                                thumbColor={isEnabledAC ? "#fff" : "#f4f3f4"}
                                 ios_backgroundColor="#3e3e3e"
-                                onValueChange={toggleSwitch}
-                                value={isEnabled}
+                                onValueChange={toggleSwitchAC}
+                                value={isEnabledAC}
                             />
                         </View>
                         <View style={{ marginTop: 20, marginHorizontal: 20 }}>
@@ -142,10 +208,10 @@ const HomeScreen = ({ navigation }) => {
                                 source={require('../../assets/wifi-router.png')} />
                             <Switch
                                 trackColor={{ false: "#767577", true: "#f95f5e" }}
-                                thumbColor={isEnabled ? "#fff" : "#f4f3f4"}
+                                thumbColor={isEnabledRoute ? "#fff" : "#f4f3f4"}
                                 ios_backgroundColor="#3e3e3e"
-                                onValueChange={toggleSwitch}
-                                value={isEnabled}
+                                onValueChange={toggleSwitchRoute}
+                                value={isEnabledRoute}
                             />
                         </View>
                         <View style={{ marginTop: 20, marginHorizontal: 20 }}>
