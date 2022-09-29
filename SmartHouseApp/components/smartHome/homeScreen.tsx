@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, Button, StyleSheet, Image, Switch } from 'react-native';
 import { getWeather, dailyForecast, showWeather, getLocation } from 'react-native-weather-api';
 import Geolocation from 'react-native-geolocation-service';
-import FontAwesome, { SolidIcons, RegularIcons, BrandIcons } from 'react-native-fontawesome';
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = ({ navigation }: {navigation: any}) => {
     
     let latitude: number;
     let longitude: number;
@@ -14,7 +13,7 @@ const HomeScreen = ({ navigation }) => {
     const [weather, setWeather] = useState<number | null>(0);
     const [location, setLocation] = useState('');
     const [weatherStatus, setWeatherStatus] = useState('');
-    // const [weather1, setWeather1] = useState<Number | null>(0);
+  
     useEffect(() => {
         Geolocation.getCurrentPosition(
             (position) => {
@@ -48,7 +47,7 @@ const HomeScreen = ({ navigation }) => {
     }, []);
 
     function renderElement() {
-        if (weatherStatus == 'broken clouds')
+        if (weatherStatus == 'few clouds')
             return (<Image
                 style={styles.weatherIcon}
                 source={require('../../assets/weather.png')} />)
@@ -56,6 +55,10 @@ const HomeScreen = ({ navigation }) => {
             return (<Image
                 style={styles.weatherIcon}
                 source={require('../../assets/rainy.png')} />);
+        if (weatherStatus == 'overcast clouds' || weatherStatus == 'broken clouds'|| weatherStatus == 'scattered  clouds')
+            return (<Image
+                style={styles.weatherIcon}
+                source={require('../../assets/cloud.png')} />);
         else return (<Image
                 style={styles.weatherIcon}
                 source={require('../../assets/sun.png')} />);
@@ -92,6 +95,7 @@ const HomeScreen = ({ navigation }) => {
                 </View>
                 <View style={{ flex: 1 }} />
                 <View style={styles.rightContainer}>
+                    
                     <Image
                         style={styles.rightContainer}
                         source={require('../../assets/profile.png')}
