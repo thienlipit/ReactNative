@@ -2,8 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, Button, StyleSheet, Image, Switch } from 'react-native';
 import { getWeather, dailyForecast, showWeather, getLocation } from 'react-native-weather-api';
 import Geolocation from 'react-native-geolocation-service';
+import { applyMiddleware, createStore } from 'redux';
+import { createLogger } from 'redux-logger';
+ 
+const logger = createLogger({
+  // ...options
+});
+ 
+// const store = createStore(
+// //   reducer,
+//   applyMiddleware(logger)
+// );
 
-const HomeScreen = ({ navigation }: {navigation: any}) => {
+const HomeScreen = ({ navigation }: any) => {
     
     let latitude: number;
     let longitude: number;
@@ -19,9 +30,9 @@ const HomeScreen = ({ navigation }: {navigation: any}) => {
             (position) => {
             latitude = position.coords.latitude
             longitude = position.coords.longitude
-            console.log("GEO API", position);
-            console.log("lat API", latitude);
-            console.log("lon API", longitude);
+            // console.log("GEO API", position);
+            // console.log("lat API", latitude);
+            // console.log("lon API", longitude);
             getWeather({
                 key: "fd6437e8fb0b4665c9fc986e4321f785",
                 lat: latitude,
@@ -32,7 +43,7 @@ const HomeScreen = ({ navigation }: {navigation: any}) => {
                 var data = new showWeather();
                 temp = data.temp;
                 wind = data.wind;
-                console.log('Weather',data)
+                // console.log('Weather',data)
                 setWeather(data.temp)
                 setLocation(data.country+', ' + data.name)
                 setWeatherStatus(data.description)
