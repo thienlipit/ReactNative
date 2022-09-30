@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Text, View, Button, StyleSheet, Image, Switch } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import { Text, View, Button, StyleSheet, Image, Switch, Pressable, Alert, TouchableOpacity } from 'react-native';
 import { getWeather, dailyForecast, showWeather, getLocation } from 'react-native-weather-api';
 import Geolocation from 'react-native-geolocation-service';
 import { applyMiddleware, createStore } from 'redux';
 import { createLogger } from 'redux-logger';
+import RBSheet from "react-native-raw-bottom-sheet";
  
 const logger = createLogger({
   // ...options
@@ -15,7 +16,7 @@ const logger = createLogger({
 // );
 
 const HomeScreen = ({ navigation }: any) => {
-    
+   
     let latitude: number;
     let longitude: number;
     var temp
@@ -66,7 +67,7 @@ const HomeScreen = ({ navigation }: any) => {
             return (<Image
                 style={styles.weatherIcon}
                 source={require('../../assets/rainy.png')} />);
-        if (weatherStatus == 'overcast clouds' || weatherStatus == 'broken clouds'|| weatherStatus == 'scattered  clouds')
+        if (weatherStatus == 'overcast clouds' || weatherStatus == 'broken clouds'|| weatherStatus == 'scattered clouds')
             return (<Image
                 style={styles.weatherIcon}
                 source={require('../../assets/cloud.png')} />);
@@ -95,6 +96,8 @@ const HomeScreen = ({ navigation }: any) => {
         setDate(date);
     }, []);
 
+    const refRBSheet = useRef();
+
     return (
         <View style={styles.container}>
 
@@ -106,11 +109,42 @@ const HomeScreen = ({ navigation }: any) => {
                 </View>
                 <View style={{ flex: 1 }} />
                 <View style={styles.rightContainer}>
-                    
-                    <Image
+                    <Pressable
+                        // style={[styles.button, styles.buttonOpen]}
+                        // onPress={() => setModalVisible(true)}
+                        onPress={() => refRBSheet.current.open()}
+                    >
+                        {/* <Text style={styles.textStyle}>Show Modal</Text> */}
+                        <Image
                         style={styles.rightContainer}
                         source={require('../../assets/profile.png')}
                     />
+                    </Pressable>
+                    <RBSheet
+                        ref={refRBSheet}
+                        closeOnDragDown={true}
+                        closeOnPressMask={false}
+                        customStyles={{
+                            wrapper: {
+                                backgroundColor: "transparent"
+                            },
+                            draggableIcon: {
+                                backgroundColor: "#000"
+                            }
+                        }}
+                    >
+                        <View style={{flexDirection: 'column', justifyContent: 'center'}}>
+                            <TouchableOpacity>
+
+                            </TouchableOpacity>
+                        </View>
+                        
+                    </RBSheet>
+                    
+                    {/* <Image
+                        style={styles.rightContainer}
+                        source={require('../../assets/profile.png')}
+                    /> */}
                 </View>
 
             </View>
@@ -300,5 +334,14 @@ const styles = StyleSheet.create({
         borderRadius: 50 / 2,
         height: 170
     },
-
+    buttonFacebookStyle: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: '#485a96',
+        borderWidth: 0.5,
+        borderColor: '#fff',
+        height: 40,
+        borderRadius: 5,
+        margin: 5,
+    },
 })
