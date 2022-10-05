@@ -8,6 +8,7 @@ import TodoItem from './TodoItem';
 import {selectFilteredTodoIds} from '../store/todos/selectors';
 
 const TodosList: React.FC = () => {
+  console.log("test")
   const todoIds = useSelector(selectFilteredTodoIds, shallowEqual);
 
   return (

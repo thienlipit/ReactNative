@@ -9,11 +9,8 @@ import {
 
 import React from 'react';
 
-interface ScreenProps {
-  style?: ViewStyle;
-}
 
-const Screen: React.FunctionComponent<ScreenProps> = ({style, children}) => {
+const Screen = ({style, children}) => {
   return (
     <SafeAreaView style={styles.parentContainer}>
       <View style={[styles.container, style]}>{children}</View>

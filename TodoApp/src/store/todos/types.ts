@@ -23,4 +23,5 @@ interface ToggleTodoAction {
   payload: number
 }
 
+
 export type TodoActionTypes = AddTodoAction | DeleteTodoAction | ToggleTodoAction;

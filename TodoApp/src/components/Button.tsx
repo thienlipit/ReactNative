@@ -25,7 +25,7 @@ const Button: FunctionComponent<Props> = ({
       onPress={onPress}
       style={[{backgroundColor: color}, styles.container, style]}
     >
-      <AppText style={{color: textColor}}>{title}</AppText>
+      <AppText style={{color: textColor}} children={title} />
     </TouchableOpacity>
   );
 };

@@ -6,7 +6,7 @@ import Card from './Card';
 import {addTodo} from '../store/todos/actions';
 import {useDispatch} from 'react-redux';
 
-const AddTodo: React.FunctionComponent = () => {
+const AddTodo = () => {
   const [todoText, setTodoText] = useState('');
   const dispatch = useDispatch();
 

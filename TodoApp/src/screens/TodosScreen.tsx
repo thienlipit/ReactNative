@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React from 'react';
 
 import AddTodo from '../components/AddTodo';
 import Screen from '../components/Screen';
@@ -6,7 +6,7 @@ import {StyleSheet} from 'react-native';
 import TodosList from '../components/TodosList';
 import colors from '../config/colors';
 
-const TodosScreen: FC = () => {
+const TodosScreen = () => {
   return (
     <Screen style={styles.container}>
       <AddTodo />

@@ -3,7 +3,10 @@ import { ADD_TODO, DELETE_TODO, TOGGLE_TODO, Todo, TodoActionTypes } from './typ
 const initialState: Todo[] = [];
 
 let id = 0;
-
+// {
+//   type: 'ADD_TODO'
+//   payload: '6666'
+// }
 const todosReducer = (state = initialState, action: TodoActionTypes): Todo[] => {
   switch (action.type) {
   case ADD_TODO:
