@@ -1,4 +1,5 @@
 import {useDispatch, useSelector} from 'react-redux';
+import {useTranslation} from 'react-i18next';
 
 import Button from './Button';
 import {Filter} from '../store/filters/types';
@@ -15,13 +16,14 @@ interface FilterButtonProps {
 const FilterButton: React.FunctionComponent<FilterButtonProps> = ({filter}) => {
   const dispatch = useDispatch();
   const selectedFilter = useSelector(selectFilter);
+  const {t, i18n} = useTranslation();
 
   return (
     <Button
       onPress={() => dispatch(changeFilter(filter))}
       style={styles.button}
       textColor={selectedFilter === filter ? colors.black : undefined}
-      title={filter}
+      title= {t(filter)}
     />
   );
 };

@@ -1,0 +1,12 @@
+{
+    "translation": {
+      "hello":"xin chao",
+      "this line is translated":"dich dong nay",
+      "Welcome to React": "chao mung den voi react-i18next",
+      "Add New Todo": "Thêm công việc mới",
+      "Add Todo": "Thêm việc cần làm",
+      "All": "Tất cả",
+      "Incomplete": "Chưa làm",
+      "Complete": "Đã xong"
+    }
+  }
