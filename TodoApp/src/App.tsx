@@ -24,7 +24,7 @@ const App = () => {
       <View style={styles.container}>
         <TodosScreen />
 
-
+        <Text style={{fontSize: 18, fontFamily: "aaa"}}>React native font family tested</Text>
         <Pressable
           onPress={() => changeLanguage('en')}
           style={{
