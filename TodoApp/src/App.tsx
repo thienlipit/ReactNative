@@ -5,19 +5,14 @@ import {Provider} from 'react-redux';
 import TodosScreen from './screens/TodosScreen';
 import colors from './config/colors';
 import '../assets/i18n/i18n'
-import AppText from './components/AppText';
 import { store } from './store/configureStore';
 
 
-
-let str = "abcd"
-
 const App = () => {
   const {t, i18n} = useTranslation();
-  
   const [currentLanguage,setLanguage] =useState('en');
+
   const changeLanguage = value => {
-    // console.log(i18n)
     i18n
       .changeLanguage(value)
       .then(() => setLanguage(value))
@@ -28,8 +23,6 @@ const App = () => {
     <Provider store={store}>
       <View style={styles.container}>
         <TodosScreen />
-
-        <Text>{t('Welcome to React')}</Text>
 
 
         <Pressable
@@ -51,10 +44,6 @@ const App = () => {
           <Text>Tieng viet</Text>
         </Pressable>
         
-
-
-
-
       </View>
     </Provider>
   );
