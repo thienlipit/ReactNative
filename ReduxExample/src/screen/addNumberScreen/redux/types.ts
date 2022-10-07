@@ -17,9 +17,4 @@ interface SubAction {
   value: number
 }
 
-export interface RootState {
-  todos: number;
-
-}
-
-export type ActionTypes = AddAction | SubAction ;
+export type ActionTypes = AddAction | SubAction;

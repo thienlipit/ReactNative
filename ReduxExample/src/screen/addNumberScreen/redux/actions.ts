@@ -4,6 +4,6 @@ export const addMethod = (): ActionTypes => (
   { type: ADD, value: 1 }
 );
 
-export const subMethod = (): ActionTypes =>  (
+export const subMethod = (): ActionTypes => (
   { type: SUB, value: 1 }
 );
