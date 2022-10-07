@@ -1,19 +1,19 @@
-import {StyleSheet, TouchableOpacity} from 'react-native';
-import {deleteTodo, toggleTodo} from '../store/todos/actions';
-import {useDispatch, useSelector} from 'react-redux';
-
+import { StyleSheet, TouchableOpacity } from 'react-native';
+import { deleteTodo, toggleTodo } from '../screens/todos/redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
 import AppText from './AppText';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import React from 'react';
-import {RootState} from '../store/types';
+import { RootState } from '../store/RootState';
 import colors from '../config/colors';
-import {selectTodoById} from '../store/todos/selectors';
+import { selectTodoById } from '../screens/todos/redux/selectors';
+
 
 interface TodoItemProps {
   id: number;
 }
 
-const TodoItem: React.FC<TodoItemProps> = ({id}) => {
+const TodoItem: React.FC<TodoItemProps> = ({ id }) => {
   const todo = useSelector((state: RootState) => selectTodoById(state, id));
   const dispatch = useDispatch();
 
@@ -26,7 +26,7 @@ const TodoItem: React.FC<TodoItemProps> = ({id}) => {
       onPress={handleToggle}
       style={[
         styles.container,
-        todo.completed && {backgroundColor: colors.medium},
+        todo.completed && { backgroundColor: colors.medium },
       ]}
     >
       {todo.completed && (
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     right: 20,
     top: 20,
   },
-  text: {flex: 1, flexWrap: 'wrap', paddingRight: 25},
+  text: { flex: 1, flexWrap: 'wrap', paddingRight: 25 },
 });
 
 export default TodoItem;

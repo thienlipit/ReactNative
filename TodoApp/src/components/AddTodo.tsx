@@ -1,14 +1,14 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 import AppTextInput from './AppTextInput';
 import Button from './Button';
 import Card from './Card';
-import {addTodo} from '../store/todos/actions';
-import {useDispatch} from 'react-redux';
-import {useTranslation} from 'react-i18next';
+import { addTodo } from '../screens/todos/redux/actions';
+import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 const AddTodo = () => {
-  const {t, i18n} = useTranslation();
+  const { t, i18n } = useTranslation();
   const [todoText, setTodoText] = useState('');
   const dispatch = useDispatch();
 
@@ -28,7 +28,7 @@ const AddTodo = () => {
         onChangeText={(text) => setTodoText(text)}
         value={todoText}
       />
-      <Button title={t("Add Todo")} onPress={handleSubmit} />
+      <Button title={t('Add Todo')} onPress={handleSubmit} />
     </Card>
   );
 };

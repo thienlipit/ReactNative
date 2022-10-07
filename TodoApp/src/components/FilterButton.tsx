@@ -2,12 +2,12 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useTranslation} from 'react-i18next';
 
 import Button from './Button';
-import {Filter} from '../store/filters/types';
+import {Filter} from '../screens/filters/types';
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import {changeFilter} from '../store/filters/actions';
+import {changeFilter} from '../screens/filters/actions';
 import colors from '../config/colors';
-import {selectFilter} from '../store/filters/selectors';
+import {selectFilter} from '../screens/filters/selectors';
 
 interface FilterButtonProps {
   filter: Filter;

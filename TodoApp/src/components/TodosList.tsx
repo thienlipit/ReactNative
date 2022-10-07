@@ -1,14 +1,15 @@
-import {FlatList, StyleSheet, View} from 'react-native';
-import {shallowEqual, useSelector} from 'react-redux';
+import { FlatList, StyleSheet, View } from 'react-native';
+import { shallowEqual, useSelector } from 'react-redux';
 
-import {Filter} from '../store/filters/types';
+import { Filter } from '../screens/filters/types';
 import FilterButton from './FilterButton';
 import React from 'react';
 import TodoItem from './TodoItem';
-import {selectFilteredTodoIds} from '../store/todos/selectors';
+import { selectFilteredTodoIds } from '../screens/todos/redux/selectors';
+
 
 const TodosList: React.FC = () => {
-  console.log("test")
+  console.log('test')
   const todoIds = useSelector(selectFilteredTodoIds, shallowEqual);
 
   return (
@@ -21,7 +22,7 @@ const TodosList: React.FC = () => {
       <FlatList
         data={todoIds}
         keyExtractor={(id) => id.toString()}
-        renderItem={({item}) => <TodoItem id={item} />}
+        renderItem={({ item }) => <TodoItem id={item} />}
         style={styles.container}
       />
     </>

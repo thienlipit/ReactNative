@@ -1,18 +1,19 @@
-import React, {useState} from 'react';
-import {StyleSheet, View, Pressable, Text} from 'react-native';
-import {useTranslation} from 'react-i18next';
-import {Provider} from 'react-redux';
-import TodosScreen from './screens/TodosScreen';
+import React, { useState } from 'react';
+import { StyleSheet, View, Pressable, Text } from 'react-native';
+import { useTranslation } from 'react-i18next';
+import { Provider } from 'react-redux';
+import TodosScreen from './screens/todos/views/TodosScreen';
 import colors from './config/colors';
-import '../assets/i18n/i18n'
+import '../assets/i18n/i18n';
 import { store } from './store/configureStore';
 
 
 const App = () => {
-  const {t, i18n} = useTranslation();
-  const [currentLanguage,setLanguage] =useState('en');
 
-  const changeLanguage = value => {
+  const { t, i18n } = useTranslation();
+  const [currentLanguage, setLanguage] = useState('en');
+
+  const changeLanguage = (value: any) => {
     i18n
       .changeLanguage(value)
       .then(() => setLanguage(value))
@@ -24,7 +25,7 @@ const App = () => {
       <View style={styles.container}>
         <TodosScreen />
 
-        <Text style={{fontSize: 18, fontFamily: "aaa"}}>React native font family tested</Text>
+        <Text style={{ fontSize: 18, fontFamily: 'aaa' }}>React native font family tested</Text>
         <Pressable
           onPress={() => changeLanguage('en')}
           style={{
@@ -43,7 +44,7 @@ const App = () => {
           }}>
           <Text>Tieng viet</Text>
         </Pressable>
-        
+
       </View>
     </Provider>
   );

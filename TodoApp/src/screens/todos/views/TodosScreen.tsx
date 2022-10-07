@@ -1,10 +1,11 @@
 import React from 'react';
 
-import AddTodo from '../components/AddTodo';
-import Screen from '../components/Screen';
+import AddTodo from '../../../components/AddTodo';
+import Screen from '../../../components/Screen';
 import {StyleSheet} from 'react-native';
-import TodosList from '../components/TodosList';
-import colors from '../config/colors';
+import TodosList from '../../../components/TodosList';
+import colors from '../../../config/colors';
+
 
 const TodosScreen = () => {
   return (

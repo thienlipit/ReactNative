@@ -1,5 +1,6 @@
-import { Filter } from '../filters/types';
-import { RootState } from '../types';
+
+import { RootState } from '../../../store/RootState';
+import { Filter } from '../../filters/types';
 import { Todo } from './types';
 
 export const selectTodos = (state: RootState): Todo[] => state.todos;
@@ -14,11 +15,11 @@ export const selectFilteredTodoIds = (state: RootState): number[] => {
   const { filter, todos } = state;
 
   switch (filter) {
-  case Filter.Incomplete:
-    return todos.filter(todo => !todo.completed).map(todo => todo.id);
-  case Filter.Complete:
-    return todos.filter(todo => todo.completed).map(todo => todo.id);
-  default:
-    return selectTodoIds(state);
+    case Filter.Incomplete:
+      return todos.filter(todo => !todo.completed).map(todo => todo.id);
+    case Filter.Complete:
+      return todos.filter(todo => todo.completed).map(todo => todo.id);
+    default:
+      return selectTodoIds(state);
   }
 };
