@@ -27,11 +27,7 @@ const CounterApp = () => {
                 <Text style={{ fontSize: 20, marginHorizontal: 30 }
                 }> {number} </Text>
                 < TouchableOpacity onPress={handleSubSubmit} >
-                    <Text style={
-                        {
-                            fontSize: 20,
-                        }
-                    }> Decrease </Text>
+                    <Text style={{ fontSize: 20 }}> Decrease </Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -47,5 +43,4 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    // eslint-disable-next-line semi
-})                                
+});                               
