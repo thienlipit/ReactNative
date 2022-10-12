@@ -30,31 +30,22 @@ const dumyData = [
     },
 ];
 
-const DetailPhone = ({ name, price }: any) => {
+const DetailIPhone = ({ route, navigation }: any) => {
+    const { name, price } = route.params;
+    console.log(route.params);
 
 
     return (
-
-        Alert.alert(name, price)
-        // <Modal animationType="slide"
-        //     transparent={true} >
-        // <SafeAreaView style={styles.container}>
-
-
-
-        // {/* <Carosel data={dumyData} /> */}
-
-        // {/* <View>
-        //     <Text> alaoala</Text>
-        // </View> */}
-
-        // </SafeAreaView>
-
+        <SafeAreaView>
+            <Carosel data={dumyData} />
+            <Text style={{ color: 'red' }}>Name: {JSON.stringify(name)}</Text>
+            <Text style={{ color: 'red' }}>Price: {price}</Text>
+        </SafeAreaView>
 
     );
 };
 
-export default DetailPhone;
+export default DetailIPhone;
 
 const styles = StyleSheet.create({
     container: {

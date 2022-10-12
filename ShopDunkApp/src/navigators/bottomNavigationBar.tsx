@@ -1,15 +1,18 @@
 import * as React from 'react';
-import { Text, View, Image, Button, StyleSheet } from 'react-native';
+import { Text, View, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import IphoneScreen from '../screens/iphone/iphoneScreen';
 import IpadScreen from '../screens/ipad/ipadScreen';
 import MacScreen from '../screens/mac/macScreen';
 import WatchScreen from '../screens/watch/watchScreen';
 import SoundScreen from '../screens/sound/soundScreen';
-
+import DetailIPhone from '../screens/iphone/detailIphone';
+import 'react-native-gesture-handler';
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 const MyTabs = () => {
     return (
@@ -22,7 +25,6 @@ const MyTabs = () => {
                     backgroundColor: '#fff',
                     height: 55,
                 },
-
 
             }} >
             <Tab.Screen name="Iphone" component={IphoneScreen}
@@ -119,6 +121,7 @@ const MyTabs = () => {
 
             <Tab.Screen name="Sound" component={SoundScreen}
                 options={{
+
                     tabBarIcon: ({ focused }) => (
                         <View style={{ alignItems: 'center', justifyContent: 'center' }}>
                             <Image
@@ -138,7 +141,6 @@ const MyTabs = () => {
 
                 }}
             />
-
         </Tab.Navigator>
     );
 };
@@ -146,7 +148,14 @@ const MyTabs = () => {
 export default function MyApp() {
     return (
         <NavigationContainer>
-            <MyTabs />
+            <Stack.Navigator>
+                <Stack.Screen
+                    name="MyTabs"
+                    component={MyTabs}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen name="DetailIPhone" component={DetailIPhone} />
+            </Stack.Navigator>
         </NavigationContainer>
     );
 }
