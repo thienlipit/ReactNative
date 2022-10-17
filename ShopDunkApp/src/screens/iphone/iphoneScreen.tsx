@@ -11,6 +11,7 @@ const IphoneScreen = ({ navigation }: any) => {
     const Item = ({ item }: any) => (
         <View style={styles.item}>
             <TouchableOpacity onPress={() => navigation.navigate('DetailIPhone', {
+                id: item.id,
                 name: item.name,
                 price: item.price,
             })}>

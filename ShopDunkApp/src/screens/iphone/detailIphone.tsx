@@ -12,6 +12,8 @@ import {
     Pressable,
 } from 'react-native';
 import { colors } from '../../assets/colors/color';
+import { listDataIphone } from '../../assets/dataIphone/listPhone';
+// import { listDetailIphone } from '../../assets/dataIphone/detailIphone';
 import Carosel from '../ipad/Carosel';
 
 
@@ -19,34 +21,11 @@ const windowWidth = Dimensions.get('screen').width;
 const windowHeight = Dimensions.get('screen').height;
 
 
-
-const dumyData = [
-    {
-        title: 'Anise Aroma Art Bazar', url: 'https://shopdunk.com/wp-content/uploads/2021/07/SEA_iPhone_11_B_3_3_11zon-692x692.webp?crop=1',
-        description: 'Lorem IPsum is simply dummy text of the printing and typesettting industry.',
-        id: 1,
-    },
-    {
-        title: 'Food inside a Bowl', url: 'https://shopdunk.com/wp-content/uploads/2021/07/SEA_iPhone_11_B_4_4_11zon-692x692.webp?crop=1',
-        description: 'Lorem IPsum is simply dummy text of the printing and typesettting industry.',
-        id: 2,
-    },
-    {
-        title: 'Vegetable Sald', url: 'https://shopdunk.com/wp-content/uploads/2021/07/SEA_iPhone_11_B_1_1_11zon-692x692.webp?crop=1',
-        description: 'Lorem IPsum is simply dummy text of the printing and typesettting industry.',
-        id: 3,
-    },
-    {
-        title: 'Vegetable Sald', url: 'https://shopdunk.com/wp-content/uploads/2021/07/SEA_iPhone_11_B_7_5_11zon-692x692.webp?crop=1',
-        description: 'Lorem IPsum is simply dummy text of the printing and typesettting industry.',
-        id: 4,
-    },
-];
-
 const DetailIPhone = ({ route, navigation }: any) => {
     const [click, setClick] = useState<number>(0);
     const [currentCapacity, setCurrentCapacity] = useState(false);
-    const { name, price } = route.params;
+    const { id, name, price } = route.params;
+    console.log("id ne:", id);
 
     const renderText = () => {
         if (click === 0) {
@@ -153,7 +132,7 @@ const DetailIPhone = ({ route, navigation }: any) => {
         <ScrollView>
             <SafeAreaView style={{ marginBottom: 30 }}>
 
-                <Carosel data={dumyData} />
+                <Carosel data={listDataIphone[id].listImage} />
                 <Text style={styles.titleName}>{name}</Text>
                 <View
                     style={{
@@ -299,7 +278,8 @@ const DetailIPhone = ({ route, navigation }: any) => {
                     borderBottomRightRadius: 5,
                 }}>
 
-                    <Text style={{ marginVertical: 3, marginHorizontal: 8, color: 'black' }}>⍟Ưu đãi thanh toán:
+                    <Text style={{ marginVertical: 3, marginHorizontal: 8, color: 'black' }}>
+                        ⍟Ưu đãi thanh toán:
                         1. Giảm 1.000.000đ khi thanh toán qua ví Moca {'\n'}
                         – Thanh toán Online nhập mã : SHOPDUNKIP14 {'\n'}
                         – Thanh toán quét mã QR tại cửa hàng. Nhập mã : IP14SDMOCA {'\n'}
@@ -313,7 +293,8 @@ const DetailIPhone = ({ route, navigation }: any) => {
                         1. Giảm 100.000đ khi mua AirPods 2 {'\n'}
                         2. Giảm 200.000đ khi mua AirPods Pro {'\n'}
                         ⍟Ưu đãi đặc quyền: {'\n'}
-                        1. Trợ giá 1.000.000đ cho khách hàng thu cũ đổi mới lên iPhone 14 Pro Max</Text>
+                        1. Trợ giá 1.000.000đ cho khách hàng thu cũ đổi mới lên iPhone 14 Pro Max
+                    </Text>
                 </View>
 
                 <View style={{
