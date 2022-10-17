@@ -1,6 +1,6 @@
 import React from 'react';
-import { TouchableOpacity, Dimensions, Alert, Image, SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
-import { dataIphone } from '../../assets/dataIphone';
+import { TouchableOpacity, Dimensions, Image, SafeAreaView, View, FlatList, StyleSheet, Text } from 'react-native';
+import { listDataIphone } from '../../assets/dataIphone/listPhone';
 import { colors } from '../../assets/colors/color';
 
 
@@ -14,7 +14,7 @@ const IphoneScreen = ({ navigation }: any) => {
                 name: item.name,
                 price: item.price,
             })}>
-                <Image style={styles.tinyLogo} source={{ uri: item.image }} />
+                <Image style={styles.tinyLogo} source={{ uri: item.urlImage }} />
                 <Text style={styles.titleName}>{item.name}</Text>
                 <Text style={styles.titlePrice}>{item.price}</Text>
             </TouchableOpacity>
@@ -31,7 +31,7 @@ const IphoneScreen = ({ navigation }: any) => {
         <SafeAreaView style={styles.container}>
             <FlatList
                 numColumns={2}
-                data={dataIphone}
+                data={listDataIphone}
                 renderItem={renderItem}
                 keyExtractor={item => item.name}
             />

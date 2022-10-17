@@ -15,6 +15,7 @@ module.exports = {
         'react-native/no-inline-styles': 'off',
         '@typescript-eslint/no-unused-vars': 'off',
         'no-trailing-spaces': 'off',
+        'comma-dangle': 'off',
       },
     },
   ],
