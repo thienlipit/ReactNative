@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Text, View, Button} from 'react-native';
-import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import {GoogleSignin, GoogleSigninButton} from '@react-native-google-signin/google-signin';
 import auth from '@react-native-firebase/auth';
 const App = () => {
   GoogleSignin.configure({
@@ -29,11 +29,28 @@ const App = () => {
         console.log(error);
       });
   };
+  const signOutWithGoogleAsync = async () => {
+    try {
+      await GoogleSignin.revokeAccess();
+      await GoogleSignin.signOut();
+    } catch (error) {
+      console.log(error);
+    }
+     
+  };
 
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#fff'}}>
       <Text> Hello world here ok men</Text>
       <Button title="Google Sign-In" onPress={signInWithGoogleAsync} />
+      <Button title="Google Sign-Out" onPress={signOutWithGoogleAsync} />
+
+      <GoogleSigninButton
+                style={{width: 250, height: 48}}
+                size={GoogleSigninButton.Size.Wide}
+                color={GoogleSigninButton.Color.Dark}
+                onPress={signInWithGoogleAsync}
+              />
     </View>
   );
 };
