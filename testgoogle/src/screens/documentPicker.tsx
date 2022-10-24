@@ -3,18 +3,19 @@ import { Alert, Button, Image, StyleSheet, Text, View } from 'react-native';
 import DocumentPicker, { DocumentPickerResponse } from 'react-native-document-picker';
 
 const DocumentPickerEx = () => {
-    const [imgResponse, setImgResponse] = useState<DocumentPickerResponse | undefined>();
+    const [imgResponse, setImgResponse] = useState<DocumentPickerResponse[] | undefined>();
     const openPicker = async () => {
         try {
-            const response = await DocumentPicker.pickSingle({
+            const response = await DocumentPicker.pickMultiple({
                 type: [DocumentPicker.types.allFiles],
                 copyTo: 'cachesDirectory',
+                allowMultiSelection: true,
             });
-            const uriImage = response;
-            setImgResponse(uriImage);
+            setImgResponse(response);
+            console.log(response.length);
             console.log(response);
-            console.log(response.name);
-            console.log(response.uri);
+            console.log(response[0].name);
+            console.log(response[0].uri);
 
         } catch { }
     };
@@ -25,8 +26,8 @@ const DocumentPickerEx = () => {
 
             {imgResponse !== undefined ? (
                 <View>
-                    <Image style={{ height: 300, width: 300, marginTop: 20 }} source={{ uri: imgResponse?.uri }} />
-                    <Text style={{ color: '#fff' }}>{imgResponse.name}</Text>
+                    <Image style={{ height: 300, width: 300, marginTop: 20 }} source={{ uri: imgResponse[0]?.uri }} />
+                    <Text style={{ color: '#fff' }}>{imgResponse[0].name}</Text>
                 </View>
             ) : undefined}
 
