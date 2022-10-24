@@ -17,6 +17,7 @@
     "@react-native-google-signin/google-signin": "^8.0.1",
     "react": "18.1.0",
     "react-native": "0.70.3",
+    "react-native-document-picker": "^8.1.2",
     "react-native-image-picker": "^4.10.0",
     "react-native-progress": "^5.0.0",
     "yarn": "^1.22.19"

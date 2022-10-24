@@ -24,6 +24,7 @@ import {
 import { GoogleSignin, GoogleSigninButton } from '@react-native-google-signin/google-signin';
 import auth from '@react-native-firebase/auth';
 import UploadScreen from './src/screens/UploadScreen';
+import DocumentPickerEx from './src/screens/documentPicker';
 
 
 const App = () => {
@@ -203,6 +204,8 @@ const App = () => {
         <SafeAreaView >
             <ScrollView >
                 <StatusBar barStyle="dark-content" />
+
+                <DocumentPickerEx />
 
                 <UploadScreen />
 

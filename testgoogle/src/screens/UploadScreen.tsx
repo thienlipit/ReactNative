@@ -9,74 +9,35 @@ import {
     Alert,
     Image
 } from 'react-native';
-import {
-    CameraOptions,
-    ImageLibraryOptions,
-    launchCamera,
-    launchImageLibrary
-} from 'react-native-image-picker';
+import DocumentPicker, { DocumentPickerResponse } from 'react-native-document-picker';
 import storage from '@react-native-firebase/storage';
 // import * as Progress from 'react-native-progress';
 
 const UploadScreen = () => {
-    const [image, setImage] = useState(null);
+    const [image, setImage] = useState<DocumentPickerResponse | undefined>();
     const [uploading, setUploading] = useState(false);
     const [transferred, setTransferred] = useState(0);
 
-    const selectImage = () => {
-        let options: ImageLibraryOptions = {
-            mediaType: 'mixed',
-        };
-        launchImageLibrary(options, async (response: any) => {
-            // console.log('Response = ', response);
-            if (response.didCancel) {
-                Alert.alert('User cancelled camera picker');
-                return;
-            } else if (response.errorCode === 'camera_unavailable') {
-                Alert.alert('Camera not available on device');
-                return;
-            } else if (response.errorCode === 'permission') {
-                Alert.alert('Permission not satisfied');
-                return;
-            } else if (response.errorCode === 'others') {
-                Alert.alert(response.errorMessage);
-                return;
-            }
-            // console.log('base64 -> ', response.assets[0].base64);
-            console.log('uri -> ', response.assets[0].uri);
-            console.log('width -> ', response.assets[0].width);
-            console.log('height -> ', response.assets[0].height);
-            console.log('fileSize -> ', response.assets[0].fileSize);
-            console.log('type -> ', response.assets[0].type);
-            console.log('fileName -> ', response.assets[0].fileName);
-            // setFilePath(response);
-            const source: any = { uri: response.assets[0].uri };
-            console.log('Print URI: ', source);
-
-            const fileName = response.assets[0].uri.split('/').pop();
-            const fileType = fileName.split('.').pop();
-            console.log(fileName, fileType);
-
-            setImage(source);
-
-            console.log('--------------------------------------------------------');
-
-            const result = await launchImageLibrary(options);
-            console.log(result);
-
-        });
+    const selectImage = async () => {
+        try {
+            const response = await DocumentPicker.pickSingle({
+                type: [DocumentPicker.types.allFiles],
+                copyTo: 'cachesDirectory',
+            });
+            setImage(response);
+        } catch { }
     };
 
     const uploadImage = async () => {
-        const { uri }: any = image;
-        const filename = uri.substring(uri.lastIndexOf('/') + 1);
+        // const { uri }: any = image?.uri;
+        const filename = image!.name;
         console.log('Print Name: ', filename);
-        const uploadUri = Platform.OS === 'ios' ? uri.replace('file://', '') : uri;
+        const uploadUri = image!.fileCopyUri;
         setUploading(true);
         setTransferred(0);
         const task = storage()
-            .ref('test11.jpg')
-            .putFile(uploadUri);
+            .ref(filename!)
+            .putFile(uploadUri!);
         // set progress state
         task.on('state_changed', snapshot => {
             setTransferred(
@@ -93,7 +54,7 @@ const UploadScreen = () => {
             'Photo uploaded!',
             'Your photo has been uploaded to Firebase Cloud Storage!'
         );
-        setImage(null);
+        setImage(undefined);
     };
 
     return (
@@ -102,7 +63,7 @@ const UploadScreen = () => {
                 <Text style={styles.buttonText}>Pick an image</Text>
             </TouchableOpacity>
             <View style={styles.imageContainer}>
-                {image !== null ? (
+                {image !== undefined ? (
                     <Image source={{ uri: image.uri }} style={styles.imageBox} />
                 ) : null}
                 {uploading ? (
