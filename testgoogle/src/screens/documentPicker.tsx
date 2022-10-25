@@ -22,7 +22,7 @@ const DocumentPickerEx = () => {
 
     return (
         <View style={styles.constainer}>
-            <Button title="Choose a file" onPress={openPicker} />
+            <Button title="Choose a file here" onPress={openPicker} />
 
             {imgResponse !== undefined ? (
                 <View>

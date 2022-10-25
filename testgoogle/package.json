@@ -5,6 +5,7 @@
   "scripts": {
     "android": "react-native run-android --port 8084",
     "clean": "cd android && gradlew clean && cd ..",
+    "cleanmac": "cd android && chmod +x gradlew && ./gradlew clean && cd ..",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
