@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Alert, Button, Image, StyleSheet, Text, View } from 'react-native';
+import { Alert, Button, Image, StyleSheet, Text, View, Dimensions } from 'react-native';
 import DocumentPicker, { DocumentPickerResponse } from 'react-native-document-picker';
+import ImageZoom from 'react-native-image-pan-zoom';
 
 const DocumentPickerEx = () => {
     const [imgResponse, setImgResponse] = useState<DocumentPickerResponse[] | undefined>();
@@ -26,7 +27,10 @@ const DocumentPickerEx = () => {
 
             {imgResponse !== undefined ? (
                 <View>
-                    <Image style={{ height: 300, width: 300, marginTop: 20 }} source={{ uri: imgResponse[0]?.uri }} />
+                    <ImageZoom cropWidth={300} cropHeight={300} imageWidth={300} imageHeight={300} >
+                        <Image style={{ height: 300, width: 300, marginTop: 20 }} source={{ uri: imgResponse[0]?.uri }} />
+                    </ImageZoom>
+                    
                     <Text style={{ color: '#fff' }}>{imgResponse[0].name}</Text>
                 </View>
             ) : undefined}
