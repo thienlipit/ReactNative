@@ -3,8 +3,6 @@
  */
 
 import { AppRegistry } from 'react-native';
-import App from './App';
-import Tabs from './src/navigators/bottomNavigationBar';
 
 import MyApp from './src/navigators/bottomNavigationBar';
 

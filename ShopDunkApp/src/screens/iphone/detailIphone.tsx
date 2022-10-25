@@ -31,7 +31,7 @@ const DetailIPhone = ({ route, navigation }: any) => {
         if (click === 0) {
             return (
 
-                <Text style={{ marginBottom: 30, color: 'black' }}>iPhone 13 Pro Một nâng cấp hệ thống camera chuyên nghiệp hoành tráng chưa từng có của Apple.
+                <Text style={{ color: 'black' }}>iPhone 13 Pro Một nâng cấp hệ thống camera chuyên nghiệp hoành tráng chưa từng có của Apple.
                     Màn hình Super Retina XDR với ProMotion cho cảm giác nhanh nhạy hơn. Chip A15 Bionic thần tốc.
                     Mạng 5G siêu nhanh. Thiết kế bền bỉ và thời lượng pin tăng vọt. {'\n'}
 
@@ -60,7 +60,8 @@ const DetailIPhone = ({ route, navigation }: any) => {
                     Khả năng chống tia nước, chống nước và chống bụi không phải là các điều kiện vĩnh viễn.
                     Khả năng này có thể giảm do hao mòn thông thường. Không sạc pin khi iPhone đang bị ướt.
                     Vui lòng tham khảo hướng dẫn sử dụng để biết cách lau sạch và làm khô máy.
-                    Không bảo hành sản phẩm bị hỏng do thấm chất lỏng. Một số tính năng không khả dụng tại một số quốc gia hoặc khu vực.</Text>
+                    Không bảo hành sản phẩm bị hỏng do thấm chất lỏng. Một số tính năng không khả dụng tại một số quốc gia hoặc khu vực.
+                </Text>
             );
         }
         if (click === 1) {
@@ -106,24 +107,14 @@ const DetailIPhone = ({ route, navigation }: any) => {
                     Đang cập nhật{'\n'}
 
                     Thương hiệu
-                    Apple</Text>
+                    Apple
+                </Text>
 
             );
         }
         if (click === 2) {
             return (
-                <View style={{
-                    backgroundColor: 'white',
-                    marginTop: 5,
-
-                    marginHorizontal: 10,
-                    paddingVertical: 5,
-                    alignContent: 'center',
-                    borderBottomLeftRadius: 5,
-                    borderBottomRightRadius: 5,
-                }}>
-                    <Text style={{ color: 'black' }}>Text 3</Text>
-                </View>
+                <Text style={{ color: 'black' }}>Text 3</Text>
             );
         }
     };
@@ -245,7 +236,7 @@ const DetailIPhone = ({ route, navigation }: any) => {
                     borderColor: colors.textBlueColor,
                     borderWidth: 1,
                 }}>
-                    <Text>TÍNH TOÁN TRẢ GÓP</Text>
+                    <Text style={{ color: colors.textBlueColor, fontWeight: 'bold' }}>TÍNH TOÁN TRẢ GÓP</Text>
                 </TouchableOpacity>
 
                 <View style={{
@@ -253,7 +244,7 @@ const DetailIPhone = ({ route, navigation }: any) => {
                     marginTop: 8,
                     marginHorizontal: 10,
                     flexDirection: 'row',
-                    height: '4%',
+                    height: '2.2%',
                     alignContent: 'center',
                     alignItems: 'center',
                     borderTopLeftRadius: 5,
@@ -334,9 +325,9 @@ const DetailIPhone = ({ route, navigation }: any) => {
 
                 <View style={{
                     backgroundColor: 'white',
-                    marginTop: 1,
+                    marginTop: 5,
                     marginHorizontal: 10,
-                    paddingVertical: 10,
+                    padding: 5,
                     alignContent: 'center',
                     borderBottomLeftRadius: 5,
                     borderBottomRightRadius: 5,
