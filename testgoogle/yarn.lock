@@ -1661,6 +1661,13 @@
   "resolved" "https://registry.npmjs.org/@react-native-community/eslint-plugin/-/eslint-plugin-1.2.0.tgz"
   "version" "1.2.0"
 
+"@react-native-community/slider@^4.3.2":
+  "integrity" "sha512-pKIx+l3yFQAVMcqGsnRcJAqZbVeR69CRbW85nZHhLuR/mOT0NbKWJIAEy7MC+e84DMTw0RJnEflRQO2/j8wcxQ=="
+  "resolved" "https://registry.npmjs.org/@react-native-community/slider/-/slider-4.3.2.tgz"
+  "version" "4.3.2"
+  dependencies:
+    "@types/react-test-renderer" "^18.0.0"
+
 "@react-native-firebase/app@^15.7.0", "@react-native-firebase/app@15.7.0", "@react-native-firebase/app@16.2.0":
   "integrity" "sha512-ZyrvewIkQC0UHDuHxXyc25/V8xYOa4xlukIHIbtJeBzVCCyVgZxF4Svyqs+CosqbHOuwWnmg+AW0rMvjrRcdmw=="
   "resolved" "https://registry.npmjs.org/@react-native-firebase/app/-/app-15.7.0.tgz"
@@ -6349,6 +6356,11 @@
   "version" "5.0.0"
   dependencies:
     "prop-types" "^15.7.2"
+
+"react-native-sound-player@^0.13.2":
+  "integrity" "sha512-m457mjp496sARAED7epYzbhorfiLZ3j6HzJn7zEL9RU+ZJKcans/0gFNUEBvlh31fSDZRliQ2WwE4mJ6836bNg=="
+  "resolved" "https://registry.npmjs.org/react-native-sound-player/-/react-native-sound-player-0.13.2.tgz"
+  "version" "0.13.2"
 
 "react-native-svg@*":
   "integrity" "sha512-B3TwK+H0+JuRhYPzF21AgqMt4fjhCwDZ9QUtwNstT5XcslJBXC0FoTkdZo8IEb1Sv4suSqhZwlAY6lwOv3tHag=="
