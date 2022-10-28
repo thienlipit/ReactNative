@@ -14,10 +14,10 @@ let whoosh = new Sound('sample_12s.mp3', Sound.MAIN_BUNDLE, (error) => {
 });
 
 const SoundScreen = ({ navigation }: any) => {
-    Sound.setCategory("Playback")
+    Sound.setCategory('Playback');
 
     const playEX = (songSelected: Sound) => {
-        console.log('clicked play')
+        console.log('clicked play');
         // Play the sound with an onEnd callback
         songSelected.play((success) => {
             if (success) {
@@ -25,27 +25,27 @@ const SoundScreen = ({ navigation }: any) => {
             } else {
                 console.log('playback failed due to audio decoding errors');
             }
-        })
-    }
+        });
+    };
     const stopEX = (songSelected: Sound) => {
-        console.log('clicked stop')
-        songSelected.stop()
-    }
+        console.log('clicked stop');
+        songSelected.stop();
+    };
 
     const pauseEX = (songSelected: Sound) => {
-        console.log('clicked pause')
-        songSelected.pause()
-    }
+        console.log('clicked pause');
+        songSelected.pause();
+    };
 
     const next15s = (songSelected: Sound) => {
-        songSelected.setCurrentTime(2)
-        songSelected.play()
+        songSelected.setCurrentTime(2);
+        songSelected.play();
         songSelected.getCurrentTime((seconds) => {
-            console.log('at ' + seconds)
-            let newTime = seconds + 1
-            console.log('New time set:', newTime)
+            console.log('at ' + seconds);
+            let newTime = seconds + 1;
+            console.log('New time set:', newTime);
             // var add15 = songSelected.setCurrentTime(newTime)
-            console.log('at11 ' + seconds)
+            console.log('at11 ' + seconds);
             // songSelected.getCurrentTime
             // console.log('+3second ', songSelected.getCurrentTime((seconds) => {
             // console.log('+3s ', seconds)
@@ -53,11 +53,11 @@ const SoundScreen = ({ navigation }: any) => {
             // }))
         });
         // songSelected.setCurrentTime(songSelected.getCurrentTime + 15 )
-    }
+    };
 
     const prev15s = (songSelected: Sound) => {
 
-    }
+    };
 
 
     return (
@@ -72,9 +72,7 @@ const SoundScreen = ({ navigation }: any) => {
                     maximumValue={1}
                     minimumTrackTintColor="#FFFFFF"
                     maximumTrackTintColor="#000000"
-                    value={whoosh.getCurrentTime((seconds) => {
-                        return seconds
-                    })}
+                    value={0.2}
                 />
                 <Text style={{ color: 'black' }}>{whoosh.getDuration()}</Text>
             </View>
@@ -104,7 +102,7 @@ const SoundScreen = ({ navigation }: any) => {
             </View>
 
 
-            <Button title='Sound Move to Iphone screen' onPress={() => navigation.navigate('Iphone')} />
+            <Button title="Sound Move to Iphone screen" onPress={() => navigation.navigate('Iphone')} />
 
             {/* <Icon name="ios-person" size={30} color="#4F8EF7" /> */}
 
