@@ -8,16 +8,80 @@ import {
     View,
     Button,
     Alert,
+    Platform,
+    PermissionsAndroid,
 } from 'react-native';
 import AudioRecorderPlayer from 'react-native-audio-recorder-player';
+import RNFetchBlob from 'rn-fetch-blob';
+
 const audioRecorderPlayer = new AudioRecorderPlayer();
+const dirs = RNFetchBlob.fs.dirs;
+const path = Platform.select({
+    ios: 'hello.m4a',
+    android: `${dirs.MusicDir}/sample6s.mp3`,
+});
+
+
 const App = () => {
     const [state, setState] = useState({});
+
+    const onStartRecord = async () => {
+
+        if (Platform.OS === 'android') {
+            try {
+                const grants = await PermissionsAndroid.requestMultiple([
+                    PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+                    PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+                    PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
+                ]);
+
+                console.log('write external stroage', grants);
+
+                if (
+                    grants['android.permission.WRITE_EXTERNAL_STORAGE'] ===
+                    PermissionsAndroid.RESULTS.GRANTED &&
+                    grants['android.permission.READ_EXTERNAL_STORAGE'] ===
+                    PermissionsAndroid.RESULTS.GRANTED &&
+                    grants['android.permission.RECORD_AUDIO'] ===
+                    PermissionsAndroid.RESULTS.GRANTED
+                ) {
+                    console.log('Permissions granted');
+                } else {
+                    console.log('All required permissions not granted');
+                    return;
+                }
+            } catch (err) {
+                console.warn(err);
+                return;
+            }
+        }
+
+        const result = await audioRecorderPlayer.startRecorder(path);
+        audioRecorderPlayer.addRecordBackListener((e) => {
+            setState({
+                recordSecs: e.currentPosition,
+                recordTime: audioRecorderPlayer.mmssss(
+                    Math.floor(e.currentPosition),
+                ),
+            });
+            return;
+        });
+        console.log(result);
+    };
+
+    const onStopRecord = async () => {
+        const result = await audioRecorderPlayer.stopRecorder();
+        audioRecorderPlayer.removeRecordBackListener();
+        setState({
+            recordSecs: 0,
+        });
+        console.log(result);
+    };
 
 
     const onStartPlay = async () => {
         console.log('onStartPlay');
-        const msg = await audioRecorderPlayer.startPlayer();
+        const msg = await audioRecorderPlayer.startPlayer(path);
         console.log(msg);
         audioRecorderPlayer.addPlayBackListener((e) => {
             setState({
@@ -44,6 +108,10 @@ const App = () => {
     return (
         <SafeAreaView>
             <Text>TEST</Text>
+            <Button onPress={() => onStartRecord()} title="Start Record" />
+            <Text>--------------------------</Text>
+            <Button onPress={() => onStopRecord()} title="Stop record" />
+            <Text>--------------------------</Text>
             <Button onPress={() => onStartPlay()} title="Play" />
             <Text>--------------------------</Text>
             <Button onPress={() => onPausePlay()} title="Pause" />
