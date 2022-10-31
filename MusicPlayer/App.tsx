@@ -10,10 +10,10 @@ import {
     Alert,
 } from 'react-native';
 import AudioRecorderPlayer from 'react-native-audio-recorder-player';
-
+const audioRecorderPlayer = new AudioRecorderPlayer();
 const App = () => {
     const [state, setState] = useState({});
-    const audioRecorderPlayer = new AudioRecorderPlayer();
+
 
     const onStartPlay = async () => {
         console.log('onStartPlay');
@@ -28,6 +28,11 @@ const App = () => {
             });
             return;
         });
+        console.log(state);
+    };
+
+    const onPausePlay = async () => {
+        await audioRecorderPlayer.pausePlayer();
     };
 
     const onStopPlay = async () => {
@@ -40,6 +45,10 @@ const App = () => {
         <SafeAreaView>
             <Text>TEST</Text>
             <Button onPress={() => onStartPlay()} title="Play" />
+            <Text>--------------------------</Text>
+            <Button onPress={() => onPausePlay()} title="Pause" />
+            <Text>--------------------------</Text>
+            <Button onPress={() => onStopPlay()} title="Stop" />
         </SafeAreaView>
     );
 };
