@@ -85,10 +85,10 @@ const App = () => {
     }
 
 
-    // function payOrder() {
-    //     var payZP = NativeModules.PayZaloBridge;
-    //     payZP.payOrder(token);
-    // }
+    function payOrder() {
+        var payZP = NativeModules.PayZaloBridge;
+        payZP.payOrder(token);
+    }
 
     return (
         <ScrollView>
@@ -113,13 +113,13 @@ const App = () => {
                 />
                 <Text style={styles.welcome}>ZpTranstoken: {token}</Text>
                 <Text style={styles.welcome}>returncode: {returncode}</Text>
-                {/* {returncode == 1 ?
+                {returncode === 1 ?
                     <Button
                         title="Pay order"
                         type="outline"
-                        onPress={() => { payOrder() }}
+                        onPress={() => { payOrder(); }}
                     /> : null
-                } */}
+                }
             </KeyboardAvoidingView>
         </ScrollView>
     );
