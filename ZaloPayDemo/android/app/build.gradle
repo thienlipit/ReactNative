@@ -249,13 +249,13 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation fileTree(dir: "libs", include: ['*.aar', '*.jar'], exclude: [])
 
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
-    implementation fileTree(dir: '/Users/tranthien/AndroidStudioProjects', include: ['*.aar', '*.jar'], exclude: [])
+//    implementation fileTree(dir: '/Users/tranthien/AndroidStudioProjects', include: ['*.aar', '*.jar'], exclude: [])
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.fbjni'
