@@ -74,10 +74,10 @@ repositories {
 }
 
 dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.aar', '*.jar'])
     //noinspection GradleDynamicVersion
     implementation 'com.facebook.react:react-native:+'  // From node_modules
     implementation 'com.google.code.gson:gson:2.8.5'
-    implementation 'com.vnpay:merchant:1.0.25'
 }
 
 def configureReactNativePom(def pom) {

@@ -45,12 +45,13 @@ const App = () => {
                         }
                     });
 
-                    // VnpayMerchant.show({
-                    //   iconBackName: 'ic_back',
-                    //   paymentUrl: 'https://sandbox.vnpayment.vn/testsdk',
-                    //   scheme: 'sampleapp',
-                    //   tmn_code: 'FAHASA03',
-                    // })
+                    VnpayMerchant.show({
+                        iconBackName: 'ic_back',
+                        paymentUrl: 'https://sandbox.vnpayment.vn/testsdk',
+                        scheme: 'sampleapp',
+                        tmn_code: 'FAHASA03',
+                    })
+
                     // VnpayMerchant.show({
                     //   iconBackName: 'ic_back',
                     //   paymentUrl: 'https://sandbox.vnpayment.vn/paymentv2/vpcpay.html?vnp_Amount=15000000&vnp_Command=pay&vnp_CreateDate=20210225130220&vnp_CurrCode=VND&vnp_Locale=vn&vnp_OrderInfo=TEST%20BAEMIN%20ORDER&vnp_TmnCode=BAEMIN01&vnp_TxnRef=130220&vnp_Version=2.0.0&vnp_SecureHashType=SHA256&vnp_SecureHash=c7d9dedc25b304c961bd9a5c6ae21cb604700193ecb6b67ed871c1d084a462f4',
@@ -58,17 +59,17 @@ const App = () => {
                     //   tmn_code: 'BAEMIN01',
                     //   title: 'payment'
                     // })
-                    VnpayMerchant.show({
-                        iconBackName: 'ic_back',
-                        paymentUrl: 'https://sandbox.vnpayment.vn/paymentv2/vpcpay.html?vnp_Amount=15000000&vnp_BankCode=MBAPP&vnp_Command=pay&vnp_CreateDate=20210225130220&vnp_CurrCode=VND&vnp_Locale=vn&vnp_OrderInfo=TEST%20BAEMIN%20ORDER&vnp_TmnCode=BAEMIN01&vnp_TxnRef=130220&vnp_Version=2.0.0&vnp_SecureHashType=SHA256&vnp_SecureHash=129664d02f0852765c8ade75b3fcca644bd0bfb26ceeb64b576e672c17f2cba1',
-                        // paymentUrl: 'https://sandbox.vnpayment.vn/testsdk/',
-                        scheme: 'swing',
-                        tmn_code: 'BAEMIN01',
-                        title: 'tittlelelelel',
-                        beginColor: '#ffffff',
-                        endColor: '#ffffff', //6 ký tự.
-                        titleColor: '#000000'
-                    })
+                    // VnpayMerchant.show({
+                    //     iconBackName: 'ic_back',
+                    //     paymentUrl: 'https://sandbox.vnpayment.vn/paymentv2/vpcpay.html?vnp_Amount=15000000&vnp_BankCode=MBAPP&vnp_Command=pay&vnp_CreateDate=20210225130220&vnp_CurrCode=VND&vnp_Locale=vn&vnp_OrderInfo=TEST%20BAEMIN%20ORDER&vnp_TmnCode=BAEMIN01&vnp_TxnRef=130220&vnp_Version=2.0.0&vnp_SecureHashType=SHA256&vnp_SecureHash=129664d02f0852765c8ade75b3fcca644bd0bfb26ceeb64b576e672c17f2cba1',
+                    //     // paymentUrl: 'https://sandbox.vnpayment.vn/testsdk/',
+                    //     scheme: 'swing',
+                    //     tmn_code: 'BAEMIN01',
+                    //     title: 'tittlelelelel',
+                    //     beginColor: '#ffffff',
+                    //     endColor: '#ffffff', //6 ký tự.
+                    //     titleColor: '#000000'
+                    // })
 
                     // VnpayMerchant.show({
                     //   isSandbox: true,
