@@ -47,7 +47,7 @@ const App = () => {
 
                     VnpayMerchant.show({
                         iconBackName: 'ic_back',
-                        paymentUrl: 'https://sandbox.vnpayment.vn/testsdk',
+                        paymentUrl: 'http://sandbox.vnpayment.vn/tryitnow/Home/CreateOrder',
                         scheme: 'sampleapp',
                         tmn_code: 'FAHASA03',
                     })
